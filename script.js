@@ -45,10 +45,10 @@ function game(){
     for (let i = 0; i < 5; i++) {
         gamesession=playerSelection(prompt("type rock,paper or scissors !"));
         if (gamesession=="playerwins"){
-        computerscore = computerscore+1;
+        playerscore = playerscore+1;
         console.log(`Score : computer:${computerscore} , player: ${playerscore}`);
         }else if (gamesession=="computerwins") {
-        playerscore=playerscore+1;
+        computerscore=computerscore+1;
         console.log(`Score : computer:${computerscore} , player: ${playerscore}`);
      }else {
         console.log(`Score : computer:${computerscore} , player: ${playerscore}`);
