@@ -1,6 +1,9 @@
 
 let playerscore=0;
 let computerscore=0;
+let result = document.querySelector('.result');
+let score= document.querySelector('.score');
+let announce= document.querySelector('.announce');
 
 function getComputerChoice(){
 let choice= Math.floor(Math.random()*3+1) ;
@@ -11,53 +14,71 @@ function playerSelection(player){
 bot=getComputerChoice();
 playerinside=player.toLowerCase();
 if(bot==playerinside){
-    console.log(`tie computer: ${bot} , player: ${player}`);
+    result.textContent=`tie computer: ${bot} , player: ${player}`;
     
 }   
 if (playerinside=="rock" && bot=="scissors") {
-    console.log(`player wins! computer: ${bot} , player: ${player}`);
+    result.textContent = `player wins! computer: ${bot} , player: ${player}`;
     return "playerwins";
     
 } else if (playerinside=="scissors" && bot=="rock") {
-    console.log(`computer wins! computer: ${bot} , player: ${player}`);
+    result.textContent =`computer wins! computer: ${bot} , player: ${player}`;
     return "computerwins";
 }else if (playerinside=="paper" && bot=="rock") {
-    console.log(`player wins! computer: ${bot} , player: ${player}`);
+    result.textContent =`player wins! computer: ${bot} , player: ${player}`;
     return "playerwins";
 }else if (playerinside=="rock" && bot=="paper") {
-    console.log(`computer wins! computer: ${bot} , player: ${player}`);
+    result.textContent =`computer wins! computer: ${bot} , player: ${player}`;
     return "computerwins";
 }else if (playerinside=="scissors" && bot=="paper") {
 
-    console.log(`player wins! computer: ${bot} , player: ${player}`);
+    result.textContent =`player wins! computer: ${bot} , player: ${player}`;
     return "playerwins";
 }else if (playerinside=="paper" && bot=="scissors") {
     
-    console.log(`computer wins! computer: ${bot} , player: ${player}`);
+    result.textContent =`computer wins! computer: ${bot} , player: ${player}`;
     return "computerwins";
 }
 }
 
 
 
-function game(){
+function game(e){
     
-    for (let i = 0; i < 5; i++) {
-        gamesession=playerSelection(prompt("type rock,paper or scissors !"));
+    
+        gamesession=e;
         if (gamesession=="playerwins"){
         playerscore = playerscore+1;
-        console.log(`Score : computer:${computerscore} , player: ${playerscore}`);
+        score.textContent=`Score : computer:${computerscore} , player: ${playerscore}`;
         }else if (gamesession=="computerwins") {
         computerscore=computerscore+1;
-        console.log(`Score : computer:${computerscore} , player: ${playerscore}`);
+        score.textContent=`Score : computer:${computerscore} , player: ${playerscore}`;
      }else {
-        console.log(`Score : computer:${computerscore} , player: ${playerscore}`);
+        score.textContent=`Score : computer:${computerscore} , player: ${playerscore}`;
      }
-    }
-if(playerscore>computerscore){
-    console.log("PLAYER WINS !")
     
-}else if (computerscore>playerscore) {console.log("COMPUTER WINS!");}
-else {console.log("TIE :(")};
+if(playerscore>computerscore && playerscore==5){
+    announce.textContent="PLAYER WINS !";
+    playerscore=0;
+    computerscore=0;
+    
+}else if (computerscore>playerscore && computerscore==5) {announce.textContent="COMPUTER WINS!"; playerscore=0;
+computerscore=0;}
+else if(computerscore==5 || playerscore==5) {announce.textContent="TIE :("; playerscore=0;
+computerscore=0;} else {announce.textContent='';};
 }
-game();
+
+const buttons = document.querySelectorAll('button');
+console.log(buttons);
+buttons.forEach( button =>  {
+    button.addEventListener('click', () =>
+    {
+        f=playerSelection(button.className);
+        
+    game(f);
+    } ) 
+}  ); 
+
+
+
+
