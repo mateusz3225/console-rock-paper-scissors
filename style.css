@@ -1,0 +1,41 @@
+.container{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:50px;
+}
+button{
+    color:white;
+    background-color: black; 
+    border:2px solid white;
+    font-size: 24px;
+    border-radius: 3px;
+    
+}
+body {
+    background-image: url('1028801.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% top;
+   height: 100vh;
+}
+.result,.score,.announce {
+    font-size: 24px;
+    color:white;
+    text-align: center;
+}
+.button{
+    transform: scale(1.05);
+    border:3px solid yellow;
+    }
+    footer {
+        color: white;
+        bottom: 5px;
+  right: 5px;
+        position:absolute;     
+    }
+    .announce{
+        font-weight: bolder;
+       
+    }

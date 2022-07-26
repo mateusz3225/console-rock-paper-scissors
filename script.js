@@ -61,11 +61,25 @@ if(playerscore>computerscore && playerscore==5){
     announce.textContent="PLAYER WINS !";
     playerscore=0;
     computerscore=0;
+    announce.style.cssText= "color: #66FF00;";
     
-}else if (computerscore>playerscore && computerscore==5) {announce.textContent="COMPUTER WINS!"; playerscore=0;
-computerscore=0;}
-else if(computerscore==5 || playerscore==5) {announce.textContent="TIE :("; playerscore=0;
-computerscore=0;} else {announce.textContent='';};
+    
+}else if 
+(   computerscore>playerscore && computerscore==5){
+    announce.textContent="COMPUTER WINS!"; 
+    playerscore=0;
+    computerscore=0;
+     announce.style.cssText= "color:red";
+}
+else if(computerscore==5 || playerscore==5) {
+    announce.textContent="TIE :("; 
+    playerscore=0;
+    computerscore=0;
+    announce.style.cssText= "color:white";
+} else 
+{
+    announce.textContent='';
+ };
 }
 
 const buttons = document.querySelectorAll('button');
@@ -78,6 +92,23 @@ buttons.forEach( button =>  {
     game(f);
     } ) 
 }  ); 
+buttons.forEach( button2 =>  {
+    button2.addEventListener('mousedown', () =>
+    {
+        button2.classList.add("button");
+        
+    } ) 
+}  ); 
+
+
+buttons.forEach( button2 =>  {
+    ['mouseup','mouseleave'].forEach( evt => 
+        {button2.addEventListener(evt, () =>
+        {
+            button2.classList.remove("button");
+            
+        })} )}
+    );
 
 
 
